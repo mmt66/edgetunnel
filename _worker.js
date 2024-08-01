@@ -5,6 +5,7 @@ import { connect } from 'cloudflare:sockets';
 // How to generate your own UUID:
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = '90cd4a77-141a-43c9-991b-08263cfe9c10';
+let token = ""
 
 let proxyIP = '';// 小白勿动，该地址并不影响你的网速，这是给CF代理使用的。'cdn.xn--b6gac.eu.org, cdn-all.xn--b6gac.eu.org, workers.cloudflare.cyou'
 
@@ -1206,7 +1207,7 @@ let subParams = ['sub','base64','b64','clash','singbox','sb'];
  * @param {string} UA
  * @returns {Promise<string>}
  */
-async function getVLESSConfig(userID, hostName, sub, UA, RproxyIP, _url) {
+async function getVLESSConfig(token, hostName, sub, UA, RproxyIP, _url) {
 	const userAgent = UA.toLowerCase();
 	const Config = 配置信息(userID , hostName);
 	const v2ray = Config[0];
@@ -1252,7 +1253,7 @@ async function getVLESSConfig(userID, hostName, sub, UA, RproxyIP, _url) {
 Subscribe / sub 订阅地址, 支持 Base64、clash-meta、sing-box 订阅格式, ${订阅器}
 ---------------------------------------------------------------
 快速自适应订阅地址:
-https://${proxyhost}${hostName}/${userID}
+https://${proxyhost}${hostName}/${token}
 https://${proxyhost}${hostName}/${userID}?sub
 
 Base64订阅地址:
